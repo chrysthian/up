@@ -7,10 +7,9 @@ class Fibo
 
     int numeroAnterior = 0;
     int numeroAtual = 1;
-    int novoNumero;
     int fibonacci;
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 10; i++)
     {
       fibonacci = numeroAnterior + numeroAtual;
       Console.WriteLine(fibonacci);
