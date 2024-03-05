@@ -9,7 +9,6 @@ let answer = 0;
 function init() {
   // variable initialization
   guesses = 0;
-  gameOver = false;
   answer = 0;
 
   colors.sort();
@@ -17,13 +16,20 @@ function init() {
   document.getElementById("colorNames").innerHTML = colors;
 
   // choose a random color
-  answer = Math.floor(Math.random() * 10);
+  answer = Math.floor(Math.random() * colors.length);
 
   // print the answer on the console
   console.log(colors[answer]);
 }
 
-function checkInput(input) {
+function guess() {
+  const { value } = document.getElementById("answer");
+  guesses++;
+
+  document.getElementById("feedback").innerHTML = checkInput(value);
+}
+
+function checkInput(value) {
   // message to be returned
   let returnMessage = "Sorry, I don't recognize your color";
 
@@ -54,9 +60,3 @@ function checkInput(input) {
   return returnMessage;
 }
 
-function guess() {
-  const { value } = document.getElementById("answer");
-  guesses++;
-
-  document.getElementById("feedback").innerHTML = checkInput(value);
-}
