@@ -1,6 +1,6 @@
 // number of images, start at zero because we increment it later
 let numberOfImages = 0;
-let score = 0;
+let score = -1;
 
 let bodyElement = null;
 let leftDiv = null;
@@ -23,7 +23,7 @@ function init() {
 function startGame() {
   // reset the numberOfFaces and the score
   numberOfImages = 0;
-  score = 0;
+  score = -1;
 
   // handles the next level logic, does not dispatch any events is this particular call
   nextLevel();
@@ -44,15 +44,16 @@ function nextLevel(event) {
   numberOfImages += 5;
 
   // add 1 to your score
-  scoreDiv.value = score++;
+  score++;
+  scoreDiv.innerHTML = "Score: " + score;
 
-  clearFaces();
-  generateFacesOnLeft();
-  cloneFacesToRight();
+  clearImages();
+  generateImagesOnLeft();
+  cloneImagesToRight();
 }
 
 // removes all child elements (if any) from the left and right panels
-function clearFaces() {
+function clearImages() {
   while (leftDiv.firstChild) {
     leftDiv.removeChild(leftDiv.firstChild);
   }
@@ -63,7 +64,7 @@ function clearFaces() {
 }
 
 // creates all divs and images on the left panel
-function generateFacesOnLeft() {
+function generateImagesOnLeft() {
   let div = null;
   let image = null;
   let container = document.createElement("div");
@@ -86,8 +87,8 @@ function generateFacesOnLeft() {
 }
 
 // clone the children of the left panel to the right panel, minus the last child of the left panel
-function cloneFacesToRight() {
-  let nodes = leftDiv.firstChild.cloneNode(true);
+function cloneImagesToRight() {
+  let nodes = leftDiv.firstChild.cloneNode(true); //copy with children = true
   nodes.removeChild(nodes.lastChild);
 
   rightDiv.appendChild(nodes);
@@ -98,7 +99,7 @@ function gameOver() {
   bodyElement.onclick = null;
   leftDiv.lastChild.onclick = null;
 
-  clearFaces();
+  clearImages();
 
   // if confirmed, re-starts the game
   if (confirm("Game Over! \n\nPlay Again?")) {
