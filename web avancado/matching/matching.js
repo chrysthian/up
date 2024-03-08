@@ -2,10 +2,10 @@
 let numberOfImages = 0;
 let score = -1;
 
-let bodyElement = null;
-let leftDiv = null;
-let rightDiv = null;
-let scoreDiv = null;
+let bodyElement;
+let leftDiv;
+let rightDiv;
+let scoreDiv;
 
 // our image source
 let imageSource = "smile.png";
@@ -65,8 +65,8 @@ function clearImages() {
 
 // creates all divs and images on the left panel
 function generateImagesOnLeft() {
-  let div = null;
-  let image = null;
+  let div;
+  let image;
   let container = document.createElement("div");
 
   for (let i = 0; i < numberOfImages; i++) {
