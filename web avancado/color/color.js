@@ -37,7 +37,7 @@ function checkInput(value) {
   for (let i = 0, len = colors.length; i < len; i++) {
 
     // if the guess matches to any value in the Array
-    if (input === colors[i]) {
+    if (value === colors[i]) {
       // guess is higher
       if (i > answer) {
         returnMessage = "Sorry, your guess is not correct <br><br> Your answer is too <b>high</b> on the list";
