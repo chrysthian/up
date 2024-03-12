@@ -1,55 +1,52 @@
 using System;
 
-namespace ExampleArrayOfObjects
+// Class definition
+class Student
 {
-  // Class definition
-  class Student
+  //private data members
+  private int enrollmentId;
+  private string name;
+  private int age;
+
+  //method to set student details
+  public void SetInfo(string name, int rollno, int age)
   {
-    //private data members
-    private int enrollmentId;
-    private string name;
-    private int age;
-
-    //method to set student details
-    public void SetInfo(string name, int rollno, int age)
-    {
-      this.enrollmentId = rollno;
-      this.age = age;
-      this.name = name;
-    }
-
-    //method to print student details
-    public void PrintInfo()
-    {
-      Console.WriteLine("------------");
-      Console.WriteLine("Student Record: ");
-      Console.WriteLine($"Name : {name}");
-      Console.WriteLine($"EnrollmentId : {enrollmentId}");
-      Console.WriteLine($"Age : {age}");
-      Console.WriteLine("------------");
-    }
-
+    this.enrollmentId = rollno;
+    this.age = age;
+    this.name = name;
   }
 
-  class Program
+  //method to print student details
+  public void PrintInfo()
   {
-    static void Main()
-    {
-      //creating array of objects
-      Student[] S = new Student[2];
+    Console.WriteLine("------------");
+    Console.WriteLine("Student Record: ");
+    Console.WriteLine($"Name : {name}");
+    Console.WriteLine($"EnrollmentId : {enrollmentId}");
+    Console.WriteLine($"Age : {age}");
+    Console.WriteLine("------------");
+  }
 
-      //Initialising objects
-      S[0] = new Student();
-      S[1] = new Student();
+}
 
-      //Setting the values and printing first object
-      S[0].SetInfo("Harry", 101, 25);
-      S[0].PrintInfo();
+class Program
+{
+  static void Main()
+  {
+    //creating array of objects
+    Student[] S = new Student[2];
 
-      //Setting the values and printing second object
-      S[1].SetInfo("Potter", 102, 27);
-      S[1].PrintInfo();
+    //Initialising objects
+    S[0] = new Student();
+    S[1] = new Student();
 
-    }
+    //Setting the values and printing first object
+    S[0].SetInfo("Harry", 101, 25);
+    S[0].PrintInfo();
+
+    //Setting the values and printing second object
+    S[1].SetInfo("Potter", 102, 27);
+    S[1].PrintInfo();
+
   }
 }
