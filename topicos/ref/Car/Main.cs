@@ -3,8 +3,8 @@ class Cars
 {
   static void Main(string[] args)
   {
-    Car civic = new();
-    Car celta = new("Chevrolet", "Celta");
+    Car civic = new Car();
+    Car celta = new Car("Chevrolet", "Celta");
 
     celta.Accelerate();
     celta.Accelerate(3.5f);

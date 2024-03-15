@@ -9,9 +9,9 @@ class Student
   private int age;
 
   //method to set student details
-  public void SetInfo(string name, int rollno, int age)
+  public void SetInfo(string name, int enrollmentId, int age)
   {
-    this.enrollmentId = rollno;
+    this.enrollmentId = enrollmentId;
     this.age = age;
     this.name = name;
   }
@@ -31,7 +31,7 @@ class Student
 
 class Program
 {
-  static void Main()
+  static void Main(string[] args)
   {
     //creating array of objects
     Student[] S = new Student[2];

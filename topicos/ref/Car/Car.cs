@@ -2,6 +2,26 @@ class Car : Vehicle
 {
   public float Speed { get; private set; }
 
+  /* 
+  C#
+  Car carro =  new  Car();
+  carro.Speed; // carro.GetSpeed();
+
+  java
+  private float speed;
+
+  public float getSpeed(){
+    return this.speed;
+  }
+
+  private void setSpeed(float speed){
+    this.speed = speed;
+  }
+
+  */
+
+
+
   public Car()
   {
     this.Brand = "Honda";
@@ -28,6 +48,15 @@ class Car : Vehicle
   public float Accelerate(float speed, bool increment)
   {
     Speed += increment ? speed : -speed;
+
+    /*
+      if(increment == true) {
+        this.Speed += speed;
+      } else {
+        this.Speed += -speed;
+      }
+    */
+
     Console.WriteLine("Car -> Accelerate com sobrecarga de operadores");
     return Speed;
 
