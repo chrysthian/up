@@ -38,7 +38,7 @@ class Nasa
     Console.WriteLine("Press any key to continue ");
     Console.Read();
 
-    Console.WriteLine(" The items are:");
+    Console.WriteLine("The items are:");
 
     foreach (var item in itens)
     {

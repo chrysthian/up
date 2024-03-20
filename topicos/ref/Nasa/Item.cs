@@ -5,7 +5,6 @@ class Item
   public int NasaRating { get; set; }
   public int PlayerRating { get; set; }
 
-
   public Item(string Name, string Description, int NasaRating)
   {
     this.Name = Name;
