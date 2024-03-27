@@ -1,6 +1,7 @@
 import clsx from 'clsx';
+import React from 'react';
 
-export default function Status({ status }: { status: string }) {
+export default function Status({ status, children }: { status: string, children?: React.ReactNode }) {
   return (
     <div
       className={clsx(
@@ -12,5 +13,6 @@ export default function Status({ status }: { status: string }) {
       )}
     >
       {status === 'pending' ? "PENDING" : "PAID"}
+      {children}
     </div>)
 }
