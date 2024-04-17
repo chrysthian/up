@@ -1,8 +1,8 @@
 "use client"
-import React, { useState } from "react"
+import React, { ReactNode, useState } from "react"
 import "./hookCount.css"
 
-export default function HookCount() {
+export default function HookCount() :ReactNode {
   const [count, setCount] = useState(0)
 
   return (
