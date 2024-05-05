@@ -49,14 +49,22 @@ class HelloWeb
 
         app.MapPut("/api/flavors", (AppDbContext context, Flavor inputFlavor) =>
         {
+            // Recupera os valores SOMENTE para consulta
             var flavor = context.Flavors.Find(inputFlavor.Id);
             if (flavor == null)
             {
                 return Results.NotFound();
             }
 
-            context.Entry(flavor).CurrentValues.SetValues(inputFlavor);
+            // Recupera os valores para ALTERAÇÃO
+            var entry = context.Entry(flavor).CurrentValues;
+
+            // Altera em MEMÓRIA
+            entry.SetValues(inputFlavor);
+
+            // Salva no BD
             context.SaveChanges();
+
             return Results.Ok(flavor);
         }).Produces<Flavor>();
 

@@ -50,7 +50,7 @@ class HelloWeb
             return Results.Ok(flavors);
         });
 
-        app.MapPut("/api/flavors", (Flavor inputFlavor) =>
+        app.MapPut("/api", (Flavor inputFlavor) =>
         {
             if (inputFlavor is null) return Results.NotFound();
 
