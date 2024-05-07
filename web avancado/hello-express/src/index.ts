@@ -1,6 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import routes from './routes/routes';
+
+import pingRoutes from './routes/pingRoutes';
+import icecreamRoutes from './routes/icecreamRoutes';
+
 import swaggerUi from "swagger-ui-express";
 
 dotenv.config();
@@ -20,7 +23,8 @@ app.use(
     })
   );
 
-app.use('/api', routes)
+app.use('/api/', pingRoutes)
+app.use('/api/icecream', icecreamRoutes)
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Express + TypeScript Server');
