@@ -1,8 +1,14 @@
 import express, { Request, Response } from "express";
-
+import PingController from "../controllers/PingController";
 const router = express.Router()
 
 //Post Method
+router.get('/ping', async (req: Request, res: Response) => {
+    const controller = new PingController();
+    const response = await controller.getMessage();
+    return res.send(response);
+})
+
 router.post('/post', (req: Request, res: Response) => {
     res.send('Post API')
 })
