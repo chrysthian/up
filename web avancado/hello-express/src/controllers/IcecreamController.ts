@@ -1,4 +1,4 @@
-import { Body, Get, Post, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route } from "tsoa";
 
 interface Icecream {
   id: number;
@@ -32,5 +32,27 @@ export default class IcecreamController {
 
     this.list.push(item)
     return item;
+  }
+
+  @Put("/update")
+  public async update(@Body() body: {id: number, name: string}): Promise<Icecream | undefined> {
+    const item = this.list.find(item => item.id === body.id)
+    
+    if(item) {
+      item.name = body.name;
+    }
+
+    return item;
+  }
+
+  @Delete("/delete/:id")
+  public async delete(id: number): Promise<number>  {
+    const index = this.list.findIndex((item) => item.id === id)
+
+    if(index > -1) {
+      this.list.splice(index, 1);
+    }
+
+    return index;
   }
 }

@@ -1,5 +1,4 @@
 import { Get, Route } from "tsoa";
-
 interface PingResponse {
   message: string;
 }

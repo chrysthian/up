@@ -4,35 +4,42 @@ import IcecreamController from "../controllers/IcecreamController";
 const router = express.Router()
 const controller = new IcecreamController()
 
-//Post Method
-router.post('/create', async (req: Request, res: Response) => {
-    const response = await controller.create(req.body)
-    return res.send(response)
-})
-
-//Get all Method
 router.get('/getAll', async (req: Request, res: Response) => {
     const response = await controller.all()
-    return res.send(response)
+    return res.status(200).send(response)
 })
 
 router.get('/getError', async (req: Request, res: Response) => {
     return res.status(400).send("XABLAU!");
 })
 
-//Get by ID Method
-router.get('/getOne/:id', async (req: Request, res: Response) => {
-    res.send('Get by ID API')
+router.post('/create', async (req: Request, res: Response) => {
+    const response = await controller.create(req.body)
+    return res.status(200).send(response)
 })
 
-//Update by ID Method
-router.patch('/update/:id', async (req: Request, res: Response) => {
-    res.send('Update by ID API')
+router.put('/update', async (req: Request, res: Response) => {
+    if (req.body.id < 0 || req.body.name == "") {
+        res.status(404).send("ID Not Found!");
+    }
+
+    const response = await controller.update(req.body);
+
+    if (response) {
+        return res.status(200).send(response);
+    }
+
+    res.status(404).send("ID Not Found!");
 })
 
-//Delete by ID Method
 router.delete('/delete/:id', async (req: Request, res: Response) => {
-    res.send('Delete by ID API')
+    const response = await controller.delete(parseInt(req.params.id));
+
+    if (response > -1) {
+        return res.status(200).send("OK");
+    }
+
+    res.status(404).send("ID Not Found!");
 })
 
 export default router;
