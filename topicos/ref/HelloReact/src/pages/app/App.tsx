@@ -3,6 +3,7 @@ import logo from "../../logo.svg"
 import { Link } from "react-router-dom"
 
 import "./App.css"
+import SimpleWithParam from "../../components/SimpleWithParam"
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         <Link className="App-link" to={`NewPage`}>
           New Page
         </Link>
+        <SimpleWithParam name="Quero Café" age={10} />
+        <SimpleWithParam name="Quero Café" age={30} />
+
+        
       </header>
     </div>
   )

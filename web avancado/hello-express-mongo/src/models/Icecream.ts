@@ -5,6 +5,9 @@ const icecreamSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  toppingId: {
+    type: mongoose.Schema.Types.ObjectId, ref: "Topping"
+  }
 })
 
 export const IcecreamModel = mongoose.model("Icecream", icecreamSchema)

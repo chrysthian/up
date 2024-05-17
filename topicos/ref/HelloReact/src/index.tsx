@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/simple/2",
-    element: <SimpleWithParam name={"Quero Café"} />,
+    element: <SimpleWithParam name={"Quero Férias"} age={10} />,
   },
   {
     path: "/NewPage",
