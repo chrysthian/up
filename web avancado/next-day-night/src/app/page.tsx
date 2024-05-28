@@ -14,6 +14,15 @@ export default function Home() {
     document.body.style.backgroundColor = isDark ? "#292c35" : "#fff";
   }, [isDark]);
 
+  useEffect(() => {
+    fetch('http://localhost:4000/api/icecream/getAll',
+    {method: "GET"})
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+  }, [])
+
   return (
     <main>
       <Toggle />

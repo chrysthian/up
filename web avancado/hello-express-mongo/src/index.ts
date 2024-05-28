@@ -1,7 +1,9 @@
 import express, { Express, Request, Response } from "express"
 import dotenv from "dotenv"
+import cors from "cors"
 
 import icecreamRoutes from "./routes/icecreamRoutes"
+import drinkRoutes from "./routes/drinkRoutes"
 
 import swaggerUi from "swagger-ui-express"
 import { connect } from "./service/database"
@@ -15,6 +17,11 @@ const databaseUrl = process.env.DATABASE_URL || ""
 
 connect(databaseUrl)
 
+const corsOptions = { 
+  origin : ['http://localhost:3000'], 
+} 
+ 
+app.use(cors(corsOptions)) 
 app.use(express.json())
 app.use(express.static("public"))
 app.use(
@@ -28,6 +35,7 @@ app.use(
 )
 
 app.use("/api/icecream", icecreamRoutes)
+app.use("/api/drink", drinkRoutes)
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server")
