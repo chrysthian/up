@@ -34,7 +34,7 @@ const RequiredFieldForm = () => {
 
   return (
     <div className="page">
-      <div className="container">
+      <div className="container-form">
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Email" value={inputValue} onChange={handleInputChange} />
           <p>{error}</p>
