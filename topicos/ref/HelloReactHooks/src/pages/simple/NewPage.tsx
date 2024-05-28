@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react"
-import Card from "../../components/Card"
+import Card from "../../components/Card/Card"
 
 const NewPage = (): ReactElement => {
   return (

@@ -13,6 +13,35 @@ const HooksPage = (): ReactElement => {
     document.body.style.backgroundColor = isDark ? "#292c35" : "#fff"
   }, [isDark])
 
+  useEffect(() => {
+    fetch("http://localhost:4000/api/flavors", { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }, [])
+
+  useEffect(() => {
+    if (!isDark) {
+      const data = {
+        id: "a2dcc71f-7705-4db6-8cf4-4f87994203b1",
+        name: "Framboesa",
+      }
+
+      fetch("http://localhost:4000/api/flavors", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+        })
+    }
+  }, [isDark])
+
   return (
     <div className="page">
       <Toggle />

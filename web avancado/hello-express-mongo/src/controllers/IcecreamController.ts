@@ -22,28 +22,25 @@ export default class IcecreamController {
   @Get("/getAll")
   public async all(): Promise<JsonObject> {
     try {
-      const data = await IcecreamModel.find();
-      return data;
-    }
-    catch (error: any) {
+      const data = await IcecreamModel.find()
+      return data
+    } catch (error: any) {
       return {
-        error: error.message
-      };
+        error: error.message,
+      }
     }
   }
 
   @Patch("/update")
   public async update(@Body() body: { id: string; name: string }): Promise<JsonObject> {
     try {
-      const result = await IcecreamModel.findByIdAndUpdate(
-        body.id, { name: body.name }
-      )
+      const result = await IcecreamModel.findByIdAndUpdate(body.id, { name: body.name })
 
-      return { result: result };
+      return { result: result }
     } catch (error: any) {
       return {
-        error: error.message
-      };
+        error: error.message,
+      }
     }
   }
 
@@ -51,53 +48,49 @@ export default class IcecreamController {
   public async delete(id: string): Promise<JsonObject> {
     try {
       const data = await IcecreamModel.findByIdAndDelete(id)
-      return { data: data };
+      return { data: data }
     } catch (error: any) {
       return {
-        error: error.message
-      };
+        error: error.message,
+      }
     }
   }
 
   @Get("/getToppings")
   public async allToppings(): Promise<JsonObject> {
     try {
-      const data = await ToppingModel.find();
-      return data;
-    }
-    catch (error: any) {
+      const data = await ToppingModel.find()
+      return data
+    } catch (error: any) {
       return {
-        error: error.message
-      };
+        error: error.message,
+      }
     }
   }
 
   @Get("/fields")
   public async fields(): Promise<JsonObject> {
     try {
-      const data = await IcecreamModel.find().select("name toppingId -_id");
+      const data = await IcecreamModel.find().select("name toppingId -_id")
 
-      return data;
-    }
-    catch (error: any) {
+      return data
+    } catch (error: any) {
       return {
-        error: error.message
-      };
+        error: error.message,
+      }
     }
   }
 
   @Get("/query")
   public async query(): Promise<JsonObject> {
     try {
-      const data = await IcecreamModel.find()
-        .populate("toppingId");
+      const data = await IcecreamModel.find().select("name toppingId -_id").populate("toppingId", "name -_id")
 
-      return data;
-    }
-    catch (error: any) {
+      return data
+    } catch (error: any) {
       return {
-        error: error.message
-      };
+        error: error.message,
+      }
     }
   }
 }

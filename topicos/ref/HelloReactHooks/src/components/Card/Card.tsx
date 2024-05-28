@@ -1,4 +1,5 @@
 import React, { ReactElement, ReactNode } from "react"
+import "./Card.css"
 
 interface params {
   name: string

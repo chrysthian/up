@@ -6,16 +6,31 @@ class HelloWeb
 {
     static void Main(string[] args)
     {
+        // nome arbitrário
+        var origins = "_origins";
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         builder.Services.AddEndpointsApiExplorer();
+
         builder.Services.AddOpenApiDocument(config =>
         {
             config.DocumentName = "Icecream";
             config.Title = "Icecream v1";
             config.Version = "v1";
         });
+
         builder.Services.AddDbContext<AppDbContext>();
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: origins,
+                            policy =>
+                            {
+                                policy.WithOrigins("http://localhost:3000")
+                                                .AllowAnyHeader()
+                                                .AllowAnyMethod();
+                            });
+        });
 
         WebApplication app = builder.Build();
         if (app.Environment.IsDevelopment())
@@ -29,6 +44,8 @@ class HelloWeb
                 config.DocExpansion = "list";
             });
         }
+
+        app.UseCors(origins);
 
         app.MapGet("/api/flavors", (AppDbContext context) =>
         {
