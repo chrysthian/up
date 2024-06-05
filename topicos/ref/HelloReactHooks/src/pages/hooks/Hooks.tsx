@@ -24,8 +24,8 @@ const HooksPage = (): ReactElement => {
   useEffect(() => {
     if (!isDark) {
       const data = {
-        id: "a2dcc71f-7705-4db6-8cf4-4f87994203b1",
-        name: "Framboesa",
+        id: "0bda72f4-9267-4d60-a1db-ffd56861eafe",
+        name: "Manga",
       }
 
       fetch("http://localhost:4000/api/flavors", {

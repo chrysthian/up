@@ -9,6 +9,7 @@ import SimpleWithParam from "./components/SimpleWithParam"
 import NewPage from "./pages/simple/NewPage"
 import HooksPage from "./pages/hooks/Hooks"
 import RequiredFieldForm from "./pages/form/RequiredFieldForm"
+import FreestylePage from "./pages/freestyle/Freestyle"
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/form",
     element: <RequiredFieldForm />,
+  },
+  {
+    path: "/freestyle",
+    element: <FreestylePage />,
   },
 ])
 

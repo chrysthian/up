@@ -6,6 +6,16 @@ const NewPage = (): ReactElement => {
     <div className="card-container">
       <Card name={"age 10"} age={10} />
       <Card name={"age 20"} age={20} />
+      <Card name={"age 10"} age={10} />
+      <Card name={"age 20"} age={20} />
+      <Card name={"age 10"} age={10} />
+      <Card name={"age 20"} age={20} />
+      <Card name={"age 10"} age={10} />
+      <Card name={"age 20"} age={20} />
+      <Card name={"age 10"} age={10} />
+      <Card name={"age 20"} age={20} />
+      <Card name={"age 10"} age={10} />
+      <Card name={"age 20"} age={20} />
     </div>
   )
 }
